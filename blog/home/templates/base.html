@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RANGE BLOGGER</title>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/media/css/templatemo-xtra-blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <input type="hidden" id="csrf" value="{{csrf_token}}">
+	<header class="tm-header" id="tm-header">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-site-header">
+                <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>            
+                <h1 class="text-center">RANGE BLOGGER</h1>
+            </div>
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item active"><a href="/" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        Blog Home
+                    </a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="tm-nav-item"><a href="{% url 'add_blog' %}" class="tm-nav-link">
+                            <i class="fas fa-pen"></i>
+                            Add Blog
+                        </a></li>
+                        <li class="tm-nav-item"><a href="{% url 'blog_list' %}" class="tm-nav-link">
+                            <i class="fas fa-users"></i>
+                            Blog List
+                        </a></li>
+                        <li class="tm-nav-item"><a href="{% url 'logout_view' %}" class="tm-nav-link">
+                            <i class="fas fa-users"></i>
+                            Logout
+                        </a></li>
+                    {% else %}
+                    </a></li>
+                    <li class="tm-nav-item"><a href="{% url 'login_view' %}" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                        Add Post
+                    </a></li>
+                    <li class="tm-nav-item"><a href="{% url 'login_view' %}" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                        Login
+                    </a></li>
+                    <li class="tm-nav-item"><a href="{% url 'register_view' %}" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                        Register
+                    </a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <p class="tm-mb-80 pr-5 text-white">
+                This is a demo made blog web app project in learning using the help of internet.
+            </p>
+        </div>
+    </header>
+    {% block start %}
+
+
+    {% endblock %}
+</body>
+<script src="/media/js/main.js"> </script>
+</html>

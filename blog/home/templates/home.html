@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+    <div class="container-fluid">
+        <main class="tm-main">
+            <div class="row tm-row">
+                {% for blog in blogs %}
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <a href="{% url 'see_blog' blog.slug %}" class="effect-lily tm-post-link tm-pt-60">
+                        <div class="tm-post-link-inner">
+                            <img src="/media/{{blog.image}}" alt="Image" class="img-fluid" style="width:500px;height:350px;">                            
+                        </div>
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{blog.title}}</h2>
+                    </a>                    
+                    <!-- <p class="tm-pt-30">
+                        There is a clickable image with beautiful hover effect and active title link for each post item. 
+                        Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
+                    </p> -->
+                    <div class="d-flex justify-content-between tm-pt-45">
+                        <span class="tm-color-primary">{{blog.user.username}}</span>
+                        <span class="tm-color-primary">{{blog.created_at}}</span>
+                    </div>
+                    <hr>
+                </article>
+                {% endfor %}
+
+            </div>
+            <footer class="row tm-row">
+                <hr class="col-12">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Design: <a rel="nofollow" target="_parent" href="https://www.google.com/" class="tm-external-link">ADMINDEATH</a>
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Made from 03/04/2022 19:05 to 07/04/2022 4:55
+                </div>
+            </footer>
+        </main>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+
+<div>
+  <link rel="stylesheet" href="/media/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <div class="wrapper">
+    <header>Login</header>
+    <div>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name="username" id="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+      </div>
+      <input type="submit" value="Login" onclick= "login()" >
+    </div>
+    <div class="sign-txt">Not yet member? <a href="{% url 'register_view' %}">Signup now</a></div>
+  </div>
+</div>
+
+{% endblock %}

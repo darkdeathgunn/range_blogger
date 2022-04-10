@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<style>
+    .mb-4{
+        width: 80%;
+        margin-left: 22%;
+        margin-right: 2%;
+    }
+</style>
+
+<div class="mb-4" align="center">
+    <h2 class="pt-2 tm-color-primary tm-post-title">{{blog.title}}</h2>
+    <p class="tm-mb-40">{{blog.created_at}} posted by {{blog.user.username}}</p>
+    <div class="col-xl-10 mx-auto"><img class="img-fluid mb-5"
+        src="/media/{{blog.image}}"
+        alt="">
+    </div>
+    <p>
+        {{blog.content|safe}} 
+    </p>
+</div>
+
+{% endblock %}

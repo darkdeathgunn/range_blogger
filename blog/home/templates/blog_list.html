@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<style>
+    table{
+        max-width: 80%;
+        margin-left: 22%;
+    }
+</style>
+
+<section>
+    <div>
+        <table class="table" align="center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Update</th>
+                <th scope="col">Update Image</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for blog in blog_objs %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{blog.title}}</td>
+                <td>{{blog.user.username}}</td>
+                <td>{{blog.created_at}}</td>
+                <td>
+                    <a href="{% url 'blog_update' blog.slug %}" class="btn btn-success">Update</a>
+                </td>
+                <td>
+                    <a href="{% url 'image_update' blog.slug %}" class="btn btn-info">Update Image</a>
+                </td>
+                <td>
+                    <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</section>
+
+{% endblock %}
